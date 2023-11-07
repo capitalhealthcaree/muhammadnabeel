@@ -54,20 +54,22 @@ const Footer = (props) => (
         Icon={icons.MapSharp}
         content={
           <a href='https://maps.app.goo.gl/sTnrnFmTftzimCN57' target='_blank'>
-            Wapda town, Lahore 54000, Pakistan
+            Shalimar Town, Lahore 54000, Pakistan
           </a>
         }
         cols={{ xs: '12', sm: '4' }}
       />
       <SingleBlock
         Icon={icons.CallSharp}
-        content={<a href='tel:+923219447416'>( +92 ) 321 944 74 16</a>}
+        content={<a href='tel:+923214873648'>( +92 ) 321 487 36 48 </a>}
         cols={{ xs: '12', sm: '4' }}
       />
       <SingleBlock
         Icon={icons.SendSharp}
         content={
-          <a href='mailto:Khubaibali327@gmail.com'>Khubaibali327@gmail.com</a>
+          <a href='mailto:Nabeelpharmacist2@gmail.com'>
+            Nabeelpharmacist2@gmail.com
+          </a>
         }
         cols={{ xs: '12', sm: '4' }}
       />
@@ -76,24 +78,24 @@ const Footer = (props) => (
     <Row className='_row _mini'>
       <Col xs='12' lg='5' className='_socials'>
         <SocialIcon
-          url='https://x.com/KhubaibAli26?t=hGYhf3rABES1xkO3_dKpbw&s=08'
+          url='https://twitter.com/NabeelAhmed_26?t=LMq8f8kWU8LTuptpIhuglQ&s=09'
           Icon={icons.LogoTwitter}
           color='#1DA1F2'
         />
         <SocialIcon
-          url='https://instagram.com/khubaibalii?igshid=OGQ5ZDc2ODk2ZA=='
+          url='https://instagram.com/nabeelsheikh26?igshid=NGVhN2U2NjQ0Yg=='
           Icon={icons.LogoInstagram}
           color='#C32361'
         />
         <SocialIcon
-          url='https://www.linkedin.com/in/khubaib-ali?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app'
+          url='https://www.linkedin.com/in/muhammadnabeel26?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app'
           Icon={icons.LogoLinkedin}
           color='#0077B5'
         />
         {/* <SocialIcon url='#0' Icon={icons.LogoYoutube} color='#c33a38' />
         <SocialIcon url='#0' Icon={icons.LogoGithub} color='#6e5494' /> */}
         <SocialIcon
-          url='https://www.facebook.com/khubaibalii?mibextid=ZbWKwL'
+          url='https://www.facebook.com/Nabeelsheikh26?mibextid=ZbWKwL'
           Icon={icons.LogoFacebook}
           color='#3B5998'
         />

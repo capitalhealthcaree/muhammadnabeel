@@ -85,7 +85,7 @@ const Sidebar = ({ children }) => {
   const data = {
     toggler: 'Menu',
     status: 'I am a Pharmacist',
-    author: 'Khubaib Ali',
+    author: 'Nabeel Ahmad',
   }
 
   return (
