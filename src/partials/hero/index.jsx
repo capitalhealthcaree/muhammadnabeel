@@ -94,8 +94,8 @@ const Hero = (props) => {
         {/* Text content */}
         <Col xs='12' lg='8' className='text-center'>
           <h1 className='_name'>
-            Nabeel
-            <span> Ahmad</span>
+            Muhammad
+            <span> Nabeel</span>
           </h1>
 
           <h4 className='_headline'>

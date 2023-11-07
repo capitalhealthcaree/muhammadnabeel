@@ -15,13 +15,13 @@ const HomeVideo = () => (
   <ScrollWrapper>
     <Metadata />
     <Hero nav='Home' id='home' variant='video' />
-    <About nav='About' id='about' />
-    <Services nav='expertise' id='expertise' />
+    <About nav='About Me' id='about' />
+    <Services nav='Expertise' id='expertise' />
     <Hire id='hire' />
-    <Scholarly nav='Scholarly Work' id='scholarly' />
-    <Publication nav='Boooks' id='publication' />
-    <Blog nav='Blog' id='blog' />
-    <Testimonial nav='Testimonial' id='testimonial' />
+    <Scholarly nav='My Scholarly Work' id='scholarly' />
+    <Publication nav='My Boooks' id='publication' />
+    <Blog nav='My Blogs' id='blog' />
+    <Testimonial nav='Testimonials' id='testimonial' />
     <Contact nav='Contact' id='contact' />
     <Footer id='footer' />
   </ScrollWrapper>
