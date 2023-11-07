@@ -19,7 +19,7 @@ const HomeVideo = () => (
     <Services nav='Expertise' id='expertise' />
     <Hire id='hire' />
     <Scholarly nav='My Scholarly Work' id='scholarly' />
-    <Publication nav='My Boooks' id='publication' />
+    <Publication nav='My Books' id='publication' />
     <Blog nav='My Blogs' id='blog' />
     <Testimonial nav='Testimonials' id='testimonial' />
     <Contact nav='Contact' id='contact' />

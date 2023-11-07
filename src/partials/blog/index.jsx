@@ -1,26 +1,15 @@
-/*
-This is the Blog section
-It retrieves blog post data from the MDX files and passes it through context to other components
-It also handles the lightbox state and dispatching actions
-*/
-
 import { useContext, createContext, useReducer, useState } from 'react'
 import SectionWrapper from 'root/src/components/section-wrapper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import Image from 'next/image'
-// import { css } from '@emotion/react'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import { Card, Col, Container, Row } from 'react-bootstrap'
-// import MdxRenderer from 'root/src/components/mdx-renderer'
 import { capitalizeFirstLetter } from 'root/utils'
 import { cx } from '@emotion/css'
 import dayjs from 'dayjs'
 import Lightbox from 'root/src/components/lightbox'
 import styled from './style'
-
-// Define where the MDX files are located
-export const BlogDataPath = 'src/partials/blog/data/*.mdx'
 
 // Create a Context for passing data between components
 const Context = createContext({})
@@ -232,43 +221,6 @@ const PostLightbox = () => {
   // Get state and dispatch from context
   const { state, dispatch } = useContext(Context)
 
-  /*
-  Defines components passed to the MdxRenderer
-  and can be called from within the MDX file
-  */
-  // const components = {
-  //   // Layout component for lightbox
-  //   PostLightboxLayout,
-
-  //   // Thumbnail component that renders image
-  //   LightboxThumbnail: () => (
-  // <Image
-  //   className='_post-thumbnail'
-  //   src={state.data.scope.frontmatter.processedImages.thumbnail[0].url}
-  //   css={css`
-  //     width: ${state.data.scope.frontmatter.processedImages.thumbnail[0]
-  //       .metadata.width}px;
-  //   `}
-  //   width={
-  //     state.data.scope.frontmatter.processedImages.thumbnail[0].metadata
-  //       .width
-  //   }
-  //   height={
-  //     state.data.scope.frontmatter.processedImages.thumbnail[0].metadata
-  //       .height
-  //   }
-  //   placeholder='blur'
-  //   blurDataURL={
-  //     state.data.scope.frontmatter.processedImages.thumbnail[0].blurData
-  //   }
-  //   sizes='
-  //     (max-width: 991.98px) 100vw,
-  //     (min-width: 992px) 75vw
-  //   '
-  //   alt='Blog post thumbnail'
-  // />
-  //   ),
-  // }
   return (
     <Lightbox
       css={styled.PostLightbox}
@@ -327,7 +279,6 @@ const Blog = (props) => {
       title: 'sdas00',
       tags: ['ReactJs', 'NextJs'],
       summary: 'It is very easy',
-      slug: 'reactjs-is-happy',
       images:
         'https://www.mypremierpain.com/_next/image/?url=https%3A%2F%2Ffirebasestorage.googleapis.com%2Fv0%2Fb%2Fpremirepaindashboard.appspot.com%2Fo%2Fimages%252Fspine-surgeons.webp%3Falt%3Dmedia%26token%3D2126c1b8-b7f5-45d3-a8a2-600640a5a50e&w=640&q=75',
     },
@@ -335,7 +286,6 @@ const Blog = (props) => {
       title: 'sdas00',
       tags: ['ReactJs', 'NextJs'],
       summary: 'It is very easy',
-      slug: 'reactjs-is-happy',
       images:
         'https://www.mypremierpain.com/_next/image/?url=https%3A%2F%2Ffirebasestorage.googleapis.com%2Fv0%2Fb%2Fpremirepaindashboard.appspot.com%2Fo%2Fimages%252Fshoulder-sprain.webp%3Falt%3Dmedia%26token%3D858f06fd-76f1-4982-92ee-cc878169fca0&w=640&q=75',
     },
@@ -343,7 +293,6 @@ const Blog = (props) => {
       title: 'sdas00',
       tags: ['ReactJs', 'NextJs'],
       summary: 'It is very easy',
-      slug: 'reactjs-is-happy',
       images:
         'https://www.mypremierpain.com/_next/image/?url=https%3A%2F%2Ffirebasestorage.googleapis.com%2Fv0%2Fb%2Fpremirepaindashboard.appspot.com%2Fo%2Fimages%252Fcomminuted-fracture.webp%3Falt%3Dmedia%26token%3D277bef01-2138-4421-9c94-dcf3429fd625&w=640&q=75',
     },
@@ -351,7 +300,6 @@ const Blog = (props) => {
       title: 'sdas00',
       tags: ['ReactJs', 'NextJs'],
       summary: 'It is very easy',
-      slug: 'reactjs-is-happy',
       images:
         'https://www.mypremierpain.com/_next/image/?url=https%3A%2F%2Ffirebasestorage.googleapis.com%2Fv0%2Fb%2Fpremirepaindashboard.appspot.com%2Fo%2Fimages%252Frhizotomy-procedure.webp%3Falt%3Dmedia%26token%3D3c781c09-b99d-450a-b2d8-d1b3bb833c7f&w=640&q=75',
     },
@@ -359,7 +307,6 @@ const Blog = (props) => {
       title: 'sdas00',
       tags: ['ReactJs', 'NextJs'],
       summary: 'It is very easy',
-      slug: 'reactjs-is-happy',
       images:
         'https://www.mypremierpain.com/_next/image/?url=https%3A%2F%2Ffirebasestorage.googleapis.com%2Fv0%2Fb%2Fpremirepaindashboard.appspot.com%2Fo%2Fimages%252Farthritis-dr-near-me.webp%3Falt%3Dmedia%26token%3Ddcffec22-918f-46ae-9b17-d74894069f57&w=640&q=75',
     },
@@ -367,7 +314,6 @@ const Blog = (props) => {
       title: 'sdas00',
       tags: ['ReactJs', 'NextJs'],
       summary: 'It is very easy',
-      slug: 'reactjs-is-happy',
       images:
         'https://www.mypremierpain.com/_next/image/?url=https%3A%2F%2Ffirebasestorage.googleapis.com%2Fv0%2Fb%2Fpremirepaindashboard.appspot.com%2Fo%2Fimages%252Fshoulder-rom.webp%3Falt%3Dmedia%26token%3D27657c35-ae5f-4585-84b3-b8e7067bfae6&w=640&q=75',
     },
@@ -382,7 +328,7 @@ const Blog = (props) => {
   return (
     <SectionWrapper
       headerData={{
-        title: 'My Blog',
+        title: 'My Blogs',
         description: 'Check out my latest blog posts',
       }}
       altBg={false}

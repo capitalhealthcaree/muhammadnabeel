@@ -9,7 +9,7 @@ import styled from './style'
 const About = (props) => (
   <SectionWrapper
     css={styled.About}
-    headerData={{ title: 'Testimonial', description: '' }}
+    headerData={{ title: 'Testimonials', description: '' }}
     {...props}
   >
     <div className='row align-items-center'>
