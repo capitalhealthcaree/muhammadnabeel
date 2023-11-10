@@ -1,4 +1,5 @@
 import 'src/styles/bootstrap/index.scss'
+import 'react-toastify/dist/ReactToastify.css'
 import 'simplebar-react/dist/simplebar.min.css'
 import styled from 'root/src/styles/global'
 import { useState, useEffect } from 'react'

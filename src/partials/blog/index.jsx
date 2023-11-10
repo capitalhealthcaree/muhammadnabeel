@@ -5,7 +5,6 @@ import Image from 'next/image'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import { Card, Col, Container, Row } from 'react-bootstrap'
-import { capitalizeFirstLetter } from 'root/utils'
 import { cx } from '@emotion/css'
 import dayjs from 'dayjs'
 import Lightbox from 'root/src/components/lightbox'
@@ -23,26 +22,7 @@ const Post = ({ data }) => {
   }
 
   // Destructure passed data
-  const { title, date, tags, summary, images } = data
-
-  // Populates the blog post card with passed tags
-  const tagsToText = (array) => {
-    // Capitalizes first letter of each tag
-    const treatedArray = array.map((element) => capitalizeFirstLetter(element))
-
-    // Checks length for singular/plural formatting
-    if (treatedArray.length === 1)
-      return <a className='link'>{treatedArray[0]}</a>
-
-    // Joins tags for plural display
-    return treatedArray.reduce((prev, curr) => (
-      <>
-        <span className='_tag'>{prev}</span>
-        <span className='_delimiter'>/</span>
-        <span className='_tag'>{curr}</span>
-      </>
-    ))
-  }
+  const { title, summary, images, createdAt } = data
 
   // Format passed plain text date
   const dateToText = (dateInput) => dayjs(dateInput).format('MMMM D, YYYY')
@@ -66,7 +46,7 @@ const Post = ({ data }) => {
           src={images}
           alt='Blog post thumbnail'
         ></Image>
-        <span className='_date'>{dateToText(date)}</span>
+        <span className='_date'>{dateToText(createdAt)}</span>
       </span>
       {/* Blog post card body */}
       <Card.Body className='_content'>
@@ -74,10 +54,6 @@ const Post = ({ data }) => {
           {title}
         </Card.Title>
         <Card.Text className='_summary'>{summary}</Card.Text>
-        <div className='_tags'>
-          <span className='_key'>Tags: </span>
-          <span className='_list'>{tagsToText(tags)}</span>
-        </div>
       </Card.Body>
     </Card>
   )
@@ -164,7 +140,7 @@ const PostsList = () => {
           }}
         >
           {/* Map over each blog post and embed it in slider */}
-          {fetchedData.map((mdxItem, i) => (
+          {fetchedData?.map((mdxItem, i) => (
             <SwiperSlide key={i}>
               <Post data={mdxItem} />
             </SwiperSlide>
@@ -179,14 +155,11 @@ const PostsList = () => {
 Layout for post content in lightbox modal
 Renders title, summary and MDX content
 */
-const PostLightboxLayout = (props) => {
+const PostLightboxLayout = () => {
   // Get context from Context provider
   const { state } = useContext(Context)
   // Destructure Frontmatter data
-  const { title, summary, images } = state.data
-
-  // Destructure children (MDX content)
-  const { children } = props
+  const { title, summary, images, content } = state.data
 
   return (
     <Row css={styled.PostLightboxLayout} className='justify-content-center'>
@@ -198,15 +171,19 @@ const PostLightboxLayout = (props) => {
           <Image
             className='_post-thumbnail'
             src={images}
-            width={100}
-            height={100}
+            width={1000}
+            height={1000}
             sizes='
           (max-width: 991.98px) 100vw,
           (min-width: 992px) 75vw
         '
             alt='Blog post thumbnail'
           />
-          <div className='_content'>{children}</div>
+
+          <div
+            className='_content'
+            dangerouslySetInnerHTML={{ __html: content }}
+          ></div>
         </div>
       </Col>
     </Row>
@@ -246,8 +223,9 @@ Main Blog component page.
 Handles data fetching, context and lightbox state.
 */
 const Blog = (props) => {
-  // Destructure props
   const { data, ...otherProps } = props
+
+  const scholarlyWork = props?.scholarlyWorkDtata?.data
 
   // Initial state
   const initialState = {
@@ -274,53 +252,9 @@ const Blog = (props) => {
 
   // State and dispatch from useReducer
   const [state, dispatch] = useReducer(stateReducer, initialState)
-  const fetchedDatas = [
-    {
-      title: 'sdas00',
-      tags: ['ReactJs', 'NextJs'],
-      summary: 'It is very easy',
-      images:
-        'https://www.mypremierpain.com/_next/image/?url=https%3A%2F%2Ffirebasestorage.googleapis.com%2Fv0%2Fb%2Fpremirepaindashboard.appspot.com%2Fo%2Fimages%252Fspine-surgeons.webp%3Falt%3Dmedia%26token%3D2126c1b8-b7f5-45d3-a8a2-600640a5a50e&w=640&q=75',
-    },
-    {
-      title: 'sdas00',
-      tags: ['ReactJs', 'NextJs'],
-      summary: 'It is very easy',
-      images:
-        'https://www.mypremierpain.com/_next/image/?url=https%3A%2F%2Ffirebasestorage.googleapis.com%2Fv0%2Fb%2Fpremirepaindashboard.appspot.com%2Fo%2Fimages%252Fshoulder-sprain.webp%3Falt%3Dmedia%26token%3D858f06fd-76f1-4982-92ee-cc878169fca0&w=640&q=75',
-    },
-    {
-      title: 'sdas00',
-      tags: ['ReactJs', 'NextJs'],
-      summary: 'It is very easy',
-      images:
-        'https://www.mypremierpain.com/_next/image/?url=https%3A%2F%2Ffirebasestorage.googleapis.com%2Fv0%2Fb%2Fpremirepaindashboard.appspot.com%2Fo%2Fimages%252Fcomminuted-fracture.webp%3Falt%3Dmedia%26token%3D277bef01-2138-4421-9c94-dcf3429fd625&w=640&q=75',
-    },
-    {
-      title: 'sdas00',
-      tags: ['ReactJs', 'NextJs'],
-      summary: 'It is very easy',
-      images:
-        'https://www.mypremierpain.com/_next/image/?url=https%3A%2F%2Ffirebasestorage.googleapis.com%2Fv0%2Fb%2Fpremirepaindashboard.appspot.com%2Fo%2Fimages%252Frhizotomy-procedure.webp%3Falt%3Dmedia%26token%3D3c781c09-b99d-450a-b2d8-d1b3bb833c7f&w=640&q=75',
-    },
-    {
-      title: 'sdas00',
-      tags: ['ReactJs', 'NextJs'],
-      summary: 'It is very easy',
-      images:
-        'https://www.mypremierpain.com/_next/image/?url=https%3A%2F%2Ffirebasestorage.googleapis.com%2Fv0%2Fb%2Fpremirepaindashboard.appspot.com%2Fo%2Fimages%252Farthritis-dr-near-me.webp%3Falt%3Dmedia%26token%3Ddcffec22-918f-46ae-9b17-d74894069f57&w=640&q=75',
-    },
-    {
-      title: 'sdas00',
-      tags: ['ReactJs', 'NextJs'],
-      summary: 'It is very easy',
-      images:
-        'https://www.mypremierpain.com/_next/image/?url=https%3A%2F%2Ffirebasestorage.googleapis.com%2Fv0%2Fb%2Fpremirepaindashboard.appspot.com%2Fo%2Fimages%252Fshoulder-rom.webp%3Falt%3Dmedia%26token%3D27657c35-ae5f-4585-84b3-b8e7067bfae6&w=640&q=75',
-    },
-  ]
   // Context data
   const contextData = {
-    fetchedData: fetchedDatas,
+    fetchedData: scholarlyWork,
     state,
     dispatch,
   }

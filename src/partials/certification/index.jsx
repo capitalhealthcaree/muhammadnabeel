@@ -6,7 +6,6 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 import { Card, Col, Container, Row } from 'react-bootstrap'
 import { cx } from '@emotion/css'
-import dayjs from 'dayjs'
 import Lightbox from 'root/src/components/lightbox'
 import styled from './style'
 
@@ -22,10 +21,9 @@ const Post = ({ data }) => {
   }
 
   // Destructure passed data
-  const { title, summary, images, createdAt } = data
+  const { title, images } = data
 
   // Format passed plain text date
-  const dateToText = (dateInput) => dayjs(dateInput).format('MMMM D, YYYY')
 
   return (
     <Card css={styled.Post}>
@@ -46,14 +44,14 @@ const Post = ({ data }) => {
           src={images}
           alt='Blog post thumbnail'
         ></Image>
-        <span className='_date'>{dateToText(createdAt)}</span>
+        {/* <span className='_date'>{dateToText(createdAt)}</span> */}
       </span>
       {/* Blog post card body */}
       <Card.Body className='_content'>
         <Card.Title onClick={clickEvent} className='_title'>
           {title}
         </Card.Title>
-        <Card.Text className='_summary'>{summary}</Card.Text>
+        {/* <Card.Text className='_summary'>{summary}</Card.Text> */}
       </Card.Body>
     </Card>
   )
@@ -153,13 +151,12 @@ const PostsList = () => {
 
 /*
 Layout for post content in lightbox modal
-Renders title, summary and MDX content
 */
 const PostLightboxLayout = () => {
   // Get context from Context provider
   const { state } = useContext(Context)
   // Destructure Frontmatter data
-  const { title, summary, images, content } = state.data
+  const { title, images, content } = state.data
 
   return (
     <Row css={styled.PostLightboxLayout} className='justify-content-center'>
@@ -167,7 +164,6 @@ const PostLightboxLayout = () => {
       <Col xs='12' lg='9'>
         <div className='_post-wrapper'>
           <h1 className='_title'>{title}</h1>
-          <p className='_summary'>{summary}</p>
           <Image
             className='_post-thumbnail'
             src={images}
@@ -225,7 +221,7 @@ Handles data fetching, context and lightbox state.
 const Blog = (props) => {
   const { data, ...otherProps } = props
 
-  const scholarlyWork = props.scholarlyWorkDtata.data
+  const testmonialDtata = props?.testmonialDtata?.data
 
   // Initial state
   const initialState = {
@@ -254,7 +250,7 @@ const Blog = (props) => {
   const [state, dispatch] = useReducer(stateReducer, initialState)
   // Context data
   const contextData = {
-    fetchedData: scholarlyWork,
+    fetchedData: testmonialDtata,
     state,
     dispatch,
   }
@@ -262,7 +258,7 @@ const Blog = (props) => {
   return (
     <SectionWrapper
       headerData={{
-        title: 'My Scholarly Work',
+        title: 'My Certification',
         description: '',
       }}
       altBg={false}

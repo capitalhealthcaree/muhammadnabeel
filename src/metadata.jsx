@@ -7,8 +7,8 @@ import Head from 'next/head'
 const Metadata = () => (
   <Head>
     <title>
-      I&apos;m Muhammad Nabeel, a dedicated Pharmacist and Medical Writer,
-      currently based in Pakistan.
+      I&apos;m Khubaib Ali, a dedicated Pharmacist and Medical Writer, currently
+      based in Pakistan.
     </title>
     <meta
       name='description'
