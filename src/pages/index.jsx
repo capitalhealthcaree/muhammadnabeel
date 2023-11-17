@@ -39,7 +39,7 @@ const HomeVideo = ({
     />
     <Book nav='My Books' id='publication' booksDtata={booksDtata} />
     <Certification
-      nav='My Certification'
+      nav='My Certifications'
       id='certification'
       testmonialDtata={certificationDtata}
     />
