@@ -50,7 +50,7 @@ const HomeVideo = ({
       testmonialDtata={testmonialDtata}
     />
     <Contact nav='Contact' id='contact' />
-    <Footer id='footer' />
+    <Footer id='footer' aboutData={aboutData} />
   </ScrollWrapper>
 )
 

@@ -1,7 +1,6 @@
 import { Col } from 'react-bootstrap'
 import SectionWrapper from 'root/src/components/section-wrapper'
 import Button from 'root/src/components/button'
-import aboutImg from 'root/public/partials/about/picture.jpg'
 import Image from 'next/image'
 import styled from './style'
 
@@ -22,7 +21,9 @@ const About = (props) => {
             (min-width: 992px) 41.66vw
           '
             alt='About Picture'
-            src={aboutImg}
+            src={data.imgUrl}
+            width={540}
+            height={675}
           />
         </Col>
         <Col xs='12' lg='7'>
@@ -34,7 +35,7 @@ const About = (props) => {
             <p>{data.paragraph1}</p>
             <p>{data.paragraph2}</p>
           </div>
-          <Button className='_button' href='/partials/about/cv.pdf' download>
+          <Button className='_button' href={data.cvUrl} download>
             Download CV
           </Button>
         </Col>

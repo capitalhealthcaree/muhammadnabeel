@@ -3,7 +3,7 @@ const nextConfig = {
   swcMinify: true,
   images: {
     formats: ['image/avif', 'image/webp'],
-    domains: ['firebasestorage.googleapis.com', 'www.mypremierpain.com'],
+    domains: ['firebasestorage.googleapis.com'],
   },
   compiler: {
     emotion: true,

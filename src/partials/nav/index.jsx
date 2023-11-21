@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react'
 import { Nav as BSNav, Navbar } from 'react-bootstrap'
 import SimpleBar from 'simplebar-react'
 import Image from 'next/image'
-import authorImg from 'root/public/partials/nav/avatar.jpg'
+import api from 'root/utils/api'
 import styled from './style'
 
 // Mobile navbar component
@@ -81,13 +81,25 @@ const MobileNav = ({ children }) => {
 
 // Component to render the sidebar
 const Sidebar = ({ children }) => {
+  const [apiData, setApiData] = useState(null)
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await api.get('getAbout')
+        setApiData(response.data)
+      } catch (error) {
+        console.error('Error fetching data:', error)
+      }
+    }
+
+    fetchData()
+  }, [])
   // Data to populate sidebar
   const data = {
     toggler: 'Menu',
     status: 'I am a Pharmacist',
     author: 'Khubaib Ali',
   }
-
   return (
     <header css={styled.Sidebar}>
       {/* Custom scrollbar for the sidebar */}
@@ -99,11 +111,10 @@ const Sidebar = ({ children }) => {
             <a style={{ overflow: 'hidden' }} href='#home'>
               <Image
                 className='_avatar'
-                src={authorImg}
+                src={apiData?.data[0]?.imgUrl}
                 width={110}
                 height={110}
                 sizes='110px'
-                placeholder='blur'
                 alt='Profile avatar'
                 priority={true}
               />
